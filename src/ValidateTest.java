@@ -52,13 +52,15 @@ public class ValidateTest {
 		return isOK;
 	}
 	public static boolean checkPhoneNumber(String str) {
+		boolean isOK = true;
         // 電話番号の正規表現パターン
-        String pattern = "(0\\d{1,4}-)?\\d{1,4}-\\d{4}";
-
+//        String pattern = "0[789]0-\\d{4}-\\d{4}";
+        Pattern pattern = Pattern.compile("([０１２３４５６７８９]|[0-9]){3}-(?:[０１２３４５６７８９０-９]|[0-9]){4}-(?:[０１２３４５６７８９０-９]|[0-9]){4}", Pattern.CASE_INSENSITIVE);
         // 正規表現パターンとのマッチングを行う
-        boolean isMatch = Pattern.matches(pattern, str);
-
-        return isMatch;
+        if(pattern.matcher(str).matches()) {
+			isOK = false;
+		}
+        return isOK;
     }
 	/*
 	 * return true:OKワード,false:NGワード
@@ -68,8 +70,8 @@ public class ValidateTest {
 		boolean isOK = true;
 		//ここにNGワードを弾く処理を書く
 		isOK = checkNull(nickName);
-		isOK = checkPostCode(nickName);
-		isOK = checkPhoneNumber(nickName);
+		isOK = checkPostCode(nickName)&&isOK;
+		isOK = checkPhoneNumber(nickName)&&isOK;
 		return isOK;
 
 	}
