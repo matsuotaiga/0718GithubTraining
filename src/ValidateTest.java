@@ -40,7 +40,7 @@ public class ValidateTest {
 	 * */
 	public static boolean checkNickName(String nickName){
 
-		boolean isOK = true;
+		boolean isOK = false;
 		//ここにNGワードを弾く処理を書く
 
 		return isOK;
