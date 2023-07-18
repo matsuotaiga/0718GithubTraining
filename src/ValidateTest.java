@@ -42,6 +42,7 @@ public class ValidateTest {
 
 		boolean isOK = false;
 		//ここにNGワードを弾く処理を書く
+		isOK = true;
 
 		return isOK;
 
