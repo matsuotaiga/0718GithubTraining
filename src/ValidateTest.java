@@ -20,7 +20,7 @@ public class ValidateTest {
             		System.out.println(line + "：NG!");
             		validateCount++;
             	}else{
-            		System.out.println(line + "：OK!");
+            		System.out.println("片岡です");
             	}
             }
 
@@ -41,7 +41,6 @@ public class ValidateTest {
 	public static boolean checkNickName(String nickName){
 
 		boolean isOK = true;
-		//ここにNGワードを弾く処理を書く
 
 		return isOK;
 
