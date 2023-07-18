@@ -3,6 +3,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 public class ValidateTest {
 
@@ -35,6 +36,30 @@ public class ValidateTest {
         }
 	}
 
+	public static boolean checkNull(String nickName) {
+		boolean isOK = true;
+		if(nickName==null) {
+			isOK = false;
+		}
+		return isOK;
+	}
+	public static boolean checkPostCode(String nickName) {
+		boolean isOK = true;
+		Pattern pattern = Pattern.compile("\\d{3}-\\d{4}", Pattern.CASE_INSENSITIVE);
+		if(pattern.matcher(nickName).matches()) {
+			isOK = false;
+		}
+		return isOK;
+	}
+	public static boolean checkPhoneNumber(String str) {
+        // 電話番号の正規表現パターン
+        String pattern = "(0\\d{1,4}-)?\\d{1,4}-\\d{4}";
+
+        // 正規表現パターンとのマッチングを行う
+        boolean isMatch = Pattern.matches(pattern, str);
+
+        return isMatch;
+    }
 	/*
 	 * return true:OKワード,false:NGワード
 	 * */
@@ -42,7 +67,9 @@ public class ValidateTest {
 
 		boolean isOK = true;
 		//ここにNGワードを弾く処理を書く
-
+		isOK = checkNull(nickName);
+		isOK = checkPostCode(nickName);
+		isOK = checkPhoneNumber(nickName);
 		return isOK;
 
 	}
